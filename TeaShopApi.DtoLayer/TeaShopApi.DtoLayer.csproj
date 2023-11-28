@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="MessageDtos\" />
     <Folder Include="TestimonialDtos\" />
-    <Folder Include="QuestionDtos\" />
   </ItemGroup>
 
 </Project>

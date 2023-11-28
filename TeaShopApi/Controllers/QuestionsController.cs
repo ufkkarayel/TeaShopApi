@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TeaShopApi.BusinessLayer.Abstract;
+using TeaShopApi.DtoLayer.QuestionDtos;
+using TeaShopApi.EntityLayer.Concrete;
 
 namespace TeaShopApi.Controllers
 {
@@ -19,6 +21,24 @@ namespace TeaShopApi.Controllers
         {
             var values=_questionService.TGetListAll();
             return Ok(values); 
+        }
+        [HttpPost]
+        public IActionResult CreateQuestion(CreateQuestionDto createQuestionDto )
+        {
+            Question question = new Question()
+            {
+                AnswerDetail = createQuestionDto.AnswerDetail,
+                QuestionDetail = createQuestionDto.QuestionDetail
+            };
+            _questionService.TInsert(question);
+            return Ok("Soru başarılı bir şekilde eklendi");
+        }
+        [HttpDelete]
+        public IActionResult DeleteQuestion(int id)
+        {
+            var values =_questionService.TGetByID(id);
+            _questionService.TDelete(values);
+            return Ok("Soru başarıyla silindi");
         }
     }
 }
