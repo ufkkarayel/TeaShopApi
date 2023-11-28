@@ -40,5 +40,23 @@ namespace TeaShopApi.Controllers
             _questionService.TDelete(values);
             return Ok("Soru başarıyla silindi");
         }
+        [HttpGet("{id}")]
+        public IActionResult GetQuestion(int id)
+        {
+            var values = _questionService.TGetByID(id);
+            return Ok(values);
+        }
+        [HttpPut]
+        public  IActionResult UpdateQuestion(UpdateQuestionDto updateQuestionDto)
+        {
+            Question question = new Question()
+            {
+                AnswerDetail = updateQuestionDto.AnswerDetail,
+                QuestionDetail = updateQuestionDto.QuestionDetail
+            };
+            _questionService.TUpdate(question);
+            return Ok("Soru başarılı bir şekilde güncellendi");
+
+        }
     }
 }
