@@ -52,10 +52,11 @@ namespace TeaShopApi.Controllers
             Question question = new Question()
             {
                 AnswerDetail = updateQuestionDto.AnswerDetail,
-                QuestionDetail = updateQuestionDto.QuestionDetail
+                QuestionDetail = updateQuestionDto.QuestionDetail,
+                QuestionID=updateQuestionDto.QuestionID
             };
             _questionService.TUpdate(question);
-            return Ok("Soru başarılı bir şekilde güncellendi");
+            return Ok("Başarılı bir şekilde güncellendi");
 
         }
     }
