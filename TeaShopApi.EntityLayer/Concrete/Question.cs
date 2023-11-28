@@ -10,6 +10,6 @@ namespace TeaShopApi.EntityLayer.Concrete
     {
         public int QuestionID { get; set; }
         public string QuestionDetail { get; set; }
-        public decimal AnswerDetail { get; set; }
+        public string AnswerDetail { get; set; }
     }
 }
