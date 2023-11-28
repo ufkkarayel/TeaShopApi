@@ -57,7 +57,6 @@ namespace TeaShopApi.Controllers
             };
             _questionService.TUpdate(question);
             return Ok("Başarılı bir şekilde güncellendi");
-
         }
     }
 }
