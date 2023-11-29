@@ -48,5 +48,19 @@ namespace TeaShopApi.Controllers
             var values = _testimonialService.TGetByID(id);
             return Ok(values);
         }
+        [HttpPut]
+        public  IActionResult UpdateTestimonial(UpdateTestimonialDto updateTestimonialDto)
+        {
+            Testimonial testimonial = new Testimonial()
+            {
+                TestimonialID = updateTestimonialDto.TestimonialID,
+                TestimonialComment = updateTestimonialDto.TestimonialComment,
+                TestimonialImageUrl = updateTestimonialDto.TestimonialImageUrl,
+                TestimonialName = updateTestimonialDto.TestimonialName
+            };
+            _testimonialService.TUpdate(testimonial);
+            return Ok("Başarılı bir şekilde güncellendi.");
+
+        }
     }
 }
