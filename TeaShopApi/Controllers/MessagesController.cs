@@ -50,5 +50,21 @@ namespace TeaShopApi.Controllers
             var values = _messageService.TGetByID(id);
             return Ok(values);
         }
+        [HttpPut]
+        public IActionResult UpdateMessage(UpdateMessageDto updateMessageDto)
+        {
+            Message message = new Message()
+            {
+                MessageID = updateMessageDto.MessageID,
+                MessageDetail = updateMessageDto.MessageDetail,
+                MessageEmail = updateMessageDto.MessageEmail,
+                MessageSendDate = updateMessageDto.MessageSendDate,
+                MessageSubject = updateMessageDto.MessageSubject,
+                SenderName = updateMessageDto.SenderName
+            };
+            _messageService.TUpdate(message);
+            return Ok("Başarılı bir şekilde güncellendi");           
+
+        }
     }
 }
