@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TeaShopApi.BusinessLayer.Abstract;
+using TeaShopApi.DtoLayer.MessageDtos;
+using TeaShopApi.EntityLayer.Concrete;
 
 namespace TeaShopApi.Controllers
 {
@@ -20,6 +22,20 @@ namespace TeaShopApi.Controllers
             var values = _messageService.TGetListAll();
             return Ok(values);
 
+        }
+        [HttpPost]
+        public ActionResult CreateMessage(CreateMessageDto createMessageDto)
+        {
+            Message message = new Message()
+            {
+                SenderName = createMessageDto.SenderName,
+                MessageDetail = createMessageDto.MessageDetail,
+                MessageEmail = createMessageDto.MessageEmail,
+                MessageSendDate = createMessageDto.MessageSendDate,
+                MessageSubject = createMessageDto.MessageSubject
+            };
+            _messageService.TInsert(message);
+            return Ok("Başarılı bir şekilde eklendi");
         }
     }
 }
