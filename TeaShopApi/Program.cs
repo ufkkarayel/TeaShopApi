@@ -13,6 +13,9 @@ builder.Services.AddScoped<IDrinkService,DrinkManager>();
 builder.Services.AddScoped<IQuestionDal, EfQuestionDal>();
 builder.Services.AddScoped<IQuestionService, QuestionManager>();
 
+builder.Services.AddScoped<IMessageDal, EfMessageDal>();
+builder.Services.AddScoped<IMessageService, MessageManager>();
+
 builder.Services.AddDbContext<TeaContext>();
 
 builder.Services.AddControllers();
