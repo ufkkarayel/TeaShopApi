@@ -16,6 +16,9 @@ builder.Services.AddScoped<IQuestionService, QuestionManager>();
 builder.Services.AddScoped<IMessageDal, EfMessageDal>();
 builder.Services.AddScoped<IMessageService, MessageManager>();
 
+builder.Services.AddScoped<ITestimonialDal, EfTestimonialDal>();
+builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
+
 builder.Services.AddDbContext<TeaContext>();
 
 builder.Services.AddControllers();
