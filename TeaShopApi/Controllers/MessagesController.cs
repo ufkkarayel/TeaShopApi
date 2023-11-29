@@ -44,5 +44,11 @@ namespace TeaShopApi.Controllers
             _messageService.TDelete(values);
             return Ok("Başarılı bir şekilde silindi");
         }
+        [HttpGet("{id}")]
+        public IActionResult GetMessage(int id)
+        {
+            var values = _messageService.TGetByID(id);
+            return Ok(values);
+        }
     }
 }
