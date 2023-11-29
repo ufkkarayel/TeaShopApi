@@ -37,5 +37,12 @@ namespace TeaShopApi.Controllers
             _messageService.TInsert(message);
             return Ok("Başarılı bir şekilde eklendi");
         }
+        [HttpDelete]
+        public IActionResult DeleteMessage(int id)
+        {
+            var values=_messageService.TGetByID(id);
+            _messageService.TDelete(values);
+            return Ok("Başarılı bir şekilde silindi");
+        }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TeaShopApi.BusinessLayer.Abstract;
+using TeaShopApi.DtoLayer.TestimonialDtos;
+using TeaShopApi.EntityLayer.Concrete;
 
 namespace TeaShopApi.Controllers
 {
@@ -20,6 +22,18 @@ namespace TeaShopApi.Controllers
             var values =_testimonialService.TGetListAll();
             return Ok(values);
 
+        }
+        [HttpPost]
+        public IActionResult CreateTestimonial(CreateTestimonialDto createTestimonialDto)
+        {
+            Testimonial testimonial = new Testimonial()
+            {
+                TestimonialComment = createTestimonialDto.TestimonialComment,
+                TestimonialImageUrl = createTestimonialDto.TestimonialImageUrl,
+                TestimonialName = createTestimonialDto.TestimonialName
+            };
+            _testimonialService.TInsert(testimonial);
+            return Ok("Başarılı bir şekilde eklendi");
         }
     }
 }
