@@ -35,5 +35,12 @@ namespace TeaShopApi.Controllers
             _testimonialService.TInsert(testimonial);
             return Ok("Başarılı bir şekilde eklendi");
         }
+        [HttpDelete]
+        public IActionResult DeleteTestimonial(int id) 
+        {
+            var values=_testimonialService.TGetByID(id);
+            _testimonialService.TDelete(values);
+            return Ok("Başarılı bir şekilde silindi");
+        }
     }
 }
