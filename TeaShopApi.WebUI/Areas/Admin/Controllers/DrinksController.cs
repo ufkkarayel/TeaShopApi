@@ -26,5 +26,14 @@ namespace TeaShopApi.WebUI.Areas.Admin.Controllers
 			}
 			return View();
 		}
+		[HttpGet]
+		public IActionResult CreateDrink()
+		{
+			return View();
+		}
+		public async Task<IActionResult> CreateDrink()
+		{
+			return View();
+		}
 	}
 }
