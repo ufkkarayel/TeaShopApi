@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Text;
 using TeaShopApi.WebUI.Dtos.DrinkDto;
 
 namespace TeaShopApi.WebUI.Areas.Admin.Controllers
 {
 	[Area("Admin")]
+	[Route("[area]/[controller]/[action]")]
 	public class DrinksController : Controller
 	{
 		private readonly IHttpClientFactory _httpClientFactory;
@@ -31,8 +33,27 @@ namespace TeaShopApi.WebUI.Areas.Admin.Controllers
 		{
 			return View();
 		}
-		public async Task<IActionResult> CreateDrink()
+		[HttpPost]
+		public async Task<IActionResult> CreateDrink(CreateDrinkDto createDrinkDto)
 		{
+			var client = _httpClientFactory.CreateClient();
+			var jsonData=JsonConvert.SerializeObject(createDrinkDto);
+			StringContent content = new StringContent(jsonData,Encoding.UTF8,"application/json");
+			var responseMessage = await client.PostAsync("https://localhost:7263/api/Drinks", content);
+			if (responseMessage.IsSuccessStatusCode)
+			{
+				return RedirectToAction("Index");
+			}
+			return View();
+		}
+		public async Task<IActionResult> DeleteDrink(int id)
+		{
+			var client = _httpClientFactory.CreateClient();
+			var responseMessage = await client.DeleteAsync("https://localhost:7263/api/Drinks?id="+id);
+			if (responseMessage.IsSuccessStatusCode)
+			{
+				return RedirectToAction("Index");
+			}
 			return View();
 		}
 	}
