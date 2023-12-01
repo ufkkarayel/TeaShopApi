@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -16,67 +15,13 @@
     @await Component.InvokeAsync("_DefaultAboutComponentPartial","Components");
     <!-- about section end -->
     <!-- booking section start -->
-    <div class="booking_section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h1 class="booking_taital">Book Now Table</h1>
-                    <p class="booking_text">It is a long established fact that a reader will be </p>
-                </div>
-                <div class="col-md-6">
-                    <div class="booking_bt"><a href="#">Book Table For Tea</a></div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @await Component.InvokeAsync("_DefaultBookingComponentPartial","Components");
     <!-- booking section end -->
     <!-- services section start -->
     @await Component.InvokeAsync("_DefaultDrinkListComponentPartial","Components")
     <!-- services section end -->
     <!-- choose section start -->
-    <div class="choose_section">
-        <div class="container">
-            <h1 class="choose_taital">Why Choose Us</h1>
-            <p class="choose_text">
-                It is a long established fact that a reader will beIt is a long established fact that a
-                reader will be
-            </p>
-            <div class="choose_section_2">
-                <div class="choose_left">
-                    <div class="choose_left_main">
-                        <div class="icon_1"><img src="~/teab-1.0.0/images/icon-1.png"></div>
-                    </div>
-                    <div class="choose_right_main">
-                        <h1 class="satisfied_text">99%<br><span class="satisfied_text_1">SATISFIED Customer</span></h1>
-                    </div>
-                </div>
-                <div class="choose_middle">
-                    <div class="choose_left_main">
-                        <div class="icon_1"><img src="~/teab-1.0.0/images/icon-2.png"></div>
-                    </div>
-                    <div class="choose_right_main">
-                        <h1 class="satisfied_text">40+<br><span class="satisfied_text_1">AWESOME TEA</span></h1>
-                    </div>
-                </div>
-                <div class="choose_middle_1">
-                    <div class="choose_left_main">
-                        <div class="icon_1"><img src="images/icon-3.png"></div>
-                    </div>
-                    <div class="choose_right_main">
-                        <h1 class="satisfied_text">4500+<br><span class="satisfied_text_1">Customer</span></h1>
-                    </div>
-                </div>
-                <div class="choose_right">
-                    <div class="choose_left_main">
-                        <div class="icon_1"><img src="~/teab-1.0.0/images/icon-4.png"></div>
-                    </div>
-                    <div class="choose_right_main">
-                        <h1 class="satisfied_text">190+<br><span class="satisfied_text_1">DAILY VISITORS</span></h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @await Component.InvokeAsync("_DefaultChooseComponentPartial","Components");
     <!-- choose section end -->
     <!-- shop section start -->
     <div class="shop_section layout_padding">
@@ -444,25 +389,25 @@
     <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
     <script>
         $(document).ready(function () {
-           $(".fancybox").fancybox({
-              openEffect: "none",
-              closeEffect: "none"
-           });
+            $(".fancybox").fancybox({
+                openEffect: "none",
+                closeEffect: "none"
+            });
 
     </script>
     <script>
         $(document).ready(function () {
-           // Add minus icon for collapse element which is open by default
-           $(".collapse.show").each(function () {
-              $(this).prev(".card-header").find(".fa").addClass("fa-minus").removeClass("fa-plus");
-           });
+            // Add minus icon for collapse element which is open by default
+            $(".collapse.show").each(function () {
+                $(this).prev(".card-header").find(".fa").addClass("fa-minus").removeClass("fa-plus");
+            });
 
-           // Toggle plus minus icon on show hide of collapse element
-           $(".collapse").on('show.bs.collapse', function () {
-              $(this).prev(".card-header").find(".fa").removeClass("fa-plus").addClass("fa-minus");
-           }).on('hide.bs.collapse', function () {
-              $(this).prev(".card-header").find(".fa").removeClass("fa-minus").addClass("fa-plus");
-           });
+            // Toggle plus minus icon on show hide of collapse element
+            $(".collapse").on('show.bs.collapse', function () {
+                $(this).prev(".card-header").find(".fa").removeClass("fa-plus").addClass("fa-minus");
+            }).on('hide.bs.collapse', function () {
+                $(this).prev(".card-header").find(".fa").removeClass("fa-minus").addClass("fa-plus");
+            });
         });
     </script>
 </body>
