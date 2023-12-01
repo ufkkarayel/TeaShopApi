@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Text;
 using TeaShopApi.WebUI.Dtos.QuestionDtos;
 
 namespace TeaShopApi.WebUI.Areas.Admin.Controllers
@@ -24,6 +25,34 @@ namespace TeaShopApi.WebUI.Areas.Admin.Controllers
                 var jsonData=await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultQuestionDto>>(jsonData); 
                 return View(values);
+            }
+            return View();
+        }
+        [HttpGet]
+        public IActionResult CreateQuestion()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateQuestion(CreateQuestionDto createQuestionDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData=JsonConvert.SerializeObject(createQuestionDto);
+            StringContent content = new StringContent(jsonData, Encoding.UTF8,"application/json");
+            var responseMessage = await client.PostAsync("https://localhost:7263/api/Questions", content);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+        public async Task<IActionResult> DeleteQuestion(int id)
+        {
+            var client=_httpClientFactory.CreateClient();
+            var responseMessage = await client.DeleteAsync("https://localhost:7263/api/Questions?id="+id);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
             }
             return View();
         }
