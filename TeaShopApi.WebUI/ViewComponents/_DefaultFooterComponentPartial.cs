@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace TeaShopApi.WebUI.Views.Shared.Components
+namespace TeaShopApi.WebUI.ViewComponents
 {
-    public class _DefaultChooseComponentPartial : ViewComponent
+    public class _DefaultFooterComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public _DefaultChooseComponentPartial(IHttpClientFactory httpClientFactory)
+        public _DefaultFooterComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
