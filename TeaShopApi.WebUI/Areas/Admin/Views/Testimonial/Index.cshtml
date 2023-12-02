@@ -1,4 +1,4 @@
-﻿@model List<ResultMessageDto>
+﻿@model List<ResultTestimonialDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
@@ -9,7 +9,7 @@
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header">
-                <h5>Mesaj İşlemleri</h5>
+                <h5>Müşteri İşlemleri</h5>
                 <div class="card-header-right">
                     <div class="btn-group card-option">
                         <button type="button" class="btn dropdown-toggle btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -29,11 +29,8 @@
                 <table class="table table-bordered">
                     <tr>
                         <th>#</th>
-                        <th>Gönderici Adı Soyadı</th>
-                        <th>Mesaj Konusu</th>
-                        <th>Mail Adresi</th>
-                        <th>Mesaj Detayı</th>
-                        
+                        <th>Müşteri Adı Soyadı</th>
+                        <th>Müşteri Mesajı</th>
                         <th>Sil</th>
                         <th>Güncelle</th>
                     </tr>
@@ -43,19 +40,17 @@
                         count++;
                         <tr>
                             <td>@count</td>
-                            <td>@item.SenderName</td>
-                            <td>@item.MessageSubject</td>
-                            <td>@item.MessageEmail</td>
-                            <td>@item.MessageDetail</td>
-                            
-                            <td> <a href="/Admin/Message/DeleteMessage/@item.MessageID" class="btn-sm btn-outline-danger">Sil</a> </td>
-                            <td> <a href="/Admin/Message/UpdateMessage/@item.MessageID" class="btn-sm btn-outline-success">Güncelle</a> </td>
+                            <td>@item.TestimonialName</td>
+                            <td>@item.TestimonialComment</td>
+                            <td> <a href="/Admin/Testimonial/DeleteTestimonial/@item.TestimonialID" class="btn-sm btn-outline-danger">Sil</a> </td>
+                            <td> <a href="/Admin/Testimonial/UpdateTestimonial/@item.TestimonialID" class="btn-sm btn-outline-success">Güncelle</a> </td>
                         </tr>
                     }
 
                 </table>
-                <a href="/Admin/Message/CreateMessage/" class="btn btn-outline-info">Yeni Mesaj Girişi</a>
+                <a href="/Admin/Testimonial/CreateTestimonial/" class="btn btn-outline-info">Yeni Müşteri Girişi</a>
             </div>
         </div>
     </div>
 </div>
+
