@@ -1,0 +1,25 @@
+﻿@model CreateMessageDto
+@{
+    ViewData["Title"] = "CreateMessage";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h1>Yeni Mesaj Girişi</h1>
+
+<form method="post">
+    <label>Gönderici adını giriniz</label>
+    <input type="text" asp-for="SenderName"  class="form-control"/>
+    <br />
+    <label>Mesaj konusunu giriniz</label>
+    <input type="text" asp-for="MessageSubject" class="form-control" />
+    <br />
+    <label>Mail adresini giriniz</label>
+    <input type="email" asp-for="MessageEmail" class="form-control" />
+    <br />
+    <label>Mesajınızı giriniz</label>
+    <input type="text" asp-for="MessageDetail" class="form-control" />
+    <br />
+    <button class="btn btn-primary">Gönder</button>
+
+    </form>
+
