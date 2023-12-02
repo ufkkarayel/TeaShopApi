@@ -1,33 +1,32 @@
-﻿<div class="frequently_section layout_padding">
+﻿@model List<TeaShopApi.WebUI.Dtos.QuestionDtos.ResultQuestionDto>
+<div class="frequently_section layout_padding">
     <div class="container">
         <h1 class="frequently_taital">Sorularınız</h1>
         <p class="frequently_text">
             Merak ettikleriniz ve daha fazlası...
         </p>
+        @foreach (var item in Model)
+        {
+            
+     
         <div class="frequently_section_2 layout_padding">
             <div class="bs-example">
                 <div class="accordion" id="accordionExample">
                     <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h2 class="mb-0">
-                                <button type="button" class="btn btn-link w-100" data-toggle="collapse"
-                                        data-target="#collapseOne">
-                                    <i class="fa fa-plus"></i>Where can I get some?
-                                </button>
+                        <div class="card-header" id="@item.QuestionID">
+                            <h2 >
+                                <button type="button" class="btn btn-link w-100">@item.QuestionDetail</button>
                             </h2>
                         </div>
-                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-                             data-parent="#accordionExample">
+                        <div>
                             <div class="card-body">
-                                <p>
-                                    HTML stands for HyperText Markup Language. HTML is the standard markup language for
-                                    describing the structure of web pages. <a href="https://www.tutorialrepublic.com/html-tutorial/" target="_blank">Learn more.</a>
-                                </p>
+                                <p>@item.AnswerDetail</p>
                             </div>
                         </div>
                     </div>                 
                 </div>
             </div>
         </div>
+        }
     </div>
 </div>
